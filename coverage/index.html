@@ -21,20 +21,20 @@
       <img src="./assets/0.4.5/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2011-08-18T00:02:04-03:00">2011-08-18T00:02:04-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2011-08-18T00:33:08-03:00">2011-08-18T00:33:08-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     All Files
-    (<span class="green">99.17%</span>)
+    (<span class="green">99.15%</span>)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>10</b> files in total.
-    <b>121</b> relevant lines. 
-    <span class="green"><b>120</b> lines covered</span> and
+    <b>118</b> relevant lines. 
+    <span class="green"><b>117</b> lines covered</span> and
     <span class="red"><b>1</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -71,9 +71,9 @@
       <tr>
         <td><a href="#1c864c9e0a593221fec31a3f680592f08acfcc2d" class="src_link" title="./lib/mongomapper_search/search.rb">./lib/mongomapper_search/search.rb</a></td>
         <td class="green">100.0 %</td>
-        <td>76</td>
-        <td>42</td>
-        <td>42</td>
+        <td>75</td>
+        <td>41</td>
+        <td>41</td>
         <td>0</td>
       </tr>
       
@@ -134,9 +134,9 @@
       <tr>
         <td><a href="#e94e751a2c002fff70579714892cc723939e4b91" class="src_link" title="./spec/util_spec.rb">./spec/util_spec.rb</a></td>
         <td class="green">100.0 %</td>
-        <td>45</td>
-        <td>22</td>
-        <td>22</td>
+        <td>41</td>
+        <td>20</td>
+        <td>20</td>
         <td>0</td>
       </tr>
       
@@ -493,7 +493,7 @@
         <pre>6</pre>
       </td>
       <td>
-        <pre>      cattr_accessor :search_fields, :allow_empty_search, :stem_keywords, :ignore_list, :match</pre>
+        <pre>      cattr_accessor :search_fields, :allow_empty_search, :stem_keywords, :match</pre>
       </td>
       <td class="hits">
         1
@@ -740,19 +740,6 @@
         <pre>25</pre>
       </td>
       <td>
-        <pre>        self.ignore_list        = YAML.load(File.open(options[:ignore_list]))[&quot;ignorelist&quot;] if options[:ignore_list].present?</pre>
-      </td>
-      <td class="hits">
-        2
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="2">
-      <td class="line_number">
-        <pre>26</pre>
-      </td>
-      <td>
         <pre>        self.search_fields      = (self.search_fields || []).concat args</pre>
       </td>
       <td class="hits">
@@ -763,7 +750,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>27</pre>
+        <pre>26</pre>
       </td>
       <td>
         <pre>        </pre>
@@ -776,7 +763,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>28</pre>
+        <pre>27</pre>
       </td>
       <td>
         <pre>        key :_keywords, Array</pre>
@@ -789,7 +776,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>29</pre>
+        <pre>28</pre>
       </td>
       <td>
         <pre>        ensure_index :_keywords, :background =&gt; true</pre>
@@ -802,7 +789,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>30</pre>
+        <pre>29</pre>
       </td>
       <td>
         <pre>        </pre>
@@ -815,7 +802,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>31</pre>
+        <pre>30</pre>
       </td>
       <td>
         <pre>        before_save :set_keywords</pre>
@@ -828,7 +815,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>32</pre>
+        <pre>31</pre>
       </td>
       <td>
         <pre>      end</pre>
@@ -841,7 +828,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>33</pre>
+        <pre>32</pre>
       </td>
       <td>
         <pre>      </pre>
@@ -854,7 +841,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>34</pre>
+        <pre>33</pre>
       </td>
       <td>
         <pre>      def search(query, options={})</pre>
@@ -867,7 +854,7 @@
     
     <tr class="hit" data-hits="18">
       <td class="line_number">
-        <pre>35</pre>
+        <pre>34</pre>
       </td>
       <td>
         <pre>        return all if query.blank? &amp;&amp; allow_empty_search</pre>
@@ -880,7 +867,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>36</pre>
+        <pre>35</pre>
       </td>
       <td>
         <pre>        </pre>
@@ -893,10 +880,10 @@
     
     <tr class="hit" data-hits="17">
       <td class="line_number">
-        <pre>37</pre>
+        <pre>36</pre>
       </td>
       <td>
-        <pre>        keywords = Util.normalize_keywords(query, stem_keywords, ignore_list)</pre>
+        <pre>        keywords = Util.normalize_keywords(query, stem_keywords)</pre>
       </td>
       <td class="hits">
         17
@@ -906,7 +893,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>38</pre>
+        <pre>37</pre>
       </td>
       <td>
         <pre>        </pre>
@@ -919,7 +906,7 @@
     
     <tr class="hit" data-hits="17">
       <td class="line_number">
-        <pre>39</pre>
+        <pre>38</pre>
       </td>
       <td>
         <pre>        regexed_keywords = []</pre>
@@ -932,7 +919,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>40</pre>
+        <pre>39</pre>
       </td>
       <td>
         <pre>                        </pre>
@@ -945,7 +932,7 @@
     
     <tr class="hit" data-hits="17">
       <td class="line_number">
-        <pre>41</pre>
+        <pre>40</pre>
       </td>
       <td>
         <pre>        keywords.each do |keyword|</pre>
@@ -958,7 +945,7 @@
     
     <tr class="hit" data-hits="21">
       <td class="line_number">
-        <pre>42</pre>
+        <pre>41</pre>
       </td>
       <td>
         <pre>          regexed_keywords.concat([/#{keyword}/])</pre>
@@ -971,7 +958,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>43</pre>
+        <pre>42</pre>
       </td>
       <td>
         <pre>        end</pre>
@@ -984,7 +971,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>44</pre>
+        <pre>43</pre>
       </td>
       <td>
         <pre>         </pre>
@@ -997,7 +984,7 @@
     
     <tr class="hit" data-hits="17">
       <td class="line_number">
-        <pre>45</pre>
+        <pre>44</pre>
       </td>
       <td>
         <pre>        search_match = options[:match]||self.match</pre>
@@ -1010,7 +997,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>46</pre>
+        <pre>45</pre>
       </td>
       <td>
         <pre>        </pre>
@@ -1023,7 +1010,7 @@
     
     <tr class="hit" data-hits="17">
       <td class="line_number">
-        <pre>47</pre>
+        <pre>46</pre>
       </td>
       <td>
         <pre>        if search_match == :all </pre>
@@ -1036,7 +1023,7 @@
     
     <tr class="hit" data-hits="8">
       <td class="line_number">
-        <pre>48</pre>
+        <pre>47</pre>
       </td>
       <td>
         <pre>          where(:_keywords =&gt; { &quot;$all&quot; =&gt; regexed_keywords })</pre>
@@ -1049,7 +1036,7 @@
     
     <tr class="hit" data-hits="9">
       <td class="line_number">
-        <pre>49</pre>
+        <pre>48</pre>
       </td>
       <td>
         <pre>        elsif search_match == :any</pre>
@@ -1062,7 +1049,7 @@
     
     <tr class="hit" data-hits="9">
       <td class="line_number">
-        <pre>50</pre>
+        <pre>49</pre>
       </td>
       <td>
         <pre>          where(:_keywords =&gt; regexed_keywords )</pre>
@@ -1075,7 +1062,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>51</pre>
+        <pre>50</pre>
       </td>
       <td>
         <pre>        end</pre>
@@ -1088,7 +1075,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>52</pre>
+        <pre>51</pre>
       </td>
       <td>
         <pre>      end</pre>
@@ -1101,7 +1088,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>53</pre>
+        <pre>52</pre>
       </td>
       <td>
         <pre>      </pre>
@@ -1114,7 +1101,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>54</pre>
+        <pre>53</pre>
       </td>
       <td>
         <pre>      # Goes through all documents in the class that includes Mongoid::Search</pre>
@@ -1127,7 +1114,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>55</pre>
+        <pre>54</pre>
       </td>
       <td>
         <pre>      # and indexes the keywords.</pre>
@@ -1140,7 +1127,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>56</pre>
+        <pre>55</pre>
       </td>
       <td>
         <pre>      def index_keywords!</pre>
@@ -1153,7 +1140,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>57</pre>
+        <pre>56</pre>
       </td>
       <td>
         <pre>        all.each { |d| d.index_keywords! }</pre>
@@ -1166,10 +1153,23 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>58</pre>
+        <pre>57</pre>
       </td>
       <td>
         <pre>      end</pre>
+      </td>
+      <td class="hits">
+        
+      </td>
+    </tr>
+  
+    
+    <tr class="never" >
+      <td class="line_number">
+        <pre>58</pre>
+      </td>
+      <td>
+        <pre>    end</pre>
       </td>
       <td class="hits">
         
@@ -1182,19 +1182,6 @@
         <pre>59</pre>
       </td>
       <td>
-        <pre>    end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>60</pre>
-      </td>
-      <td>
         <pre>    </pre>
       </td>
       <td class="hits">
@@ -1205,7 +1192,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>61</pre>
+        <pre>60</pre>
       </td>
       <td>
         <pre>    module InstanceMethods #:nodoc:</pre>
@@ -1218,7 +1205,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>62</pre>
+        <pre>61</pre>
       </td>
       <td>
         <pre>      # Indexes the document keywords</pre>
@@ -1231,7 +1218,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>63</pre>
+        <pre>62</pre>
       </td>
       <td>
         <pre>      def index_keywords!</pre>
@@ -1244,7 +1231,7 @@
     
     <tr class="hit" data-hits="2">
       <td class="line_number">
-        <pre>64</pre>
+        <pre>63</pre>
       </td>
       <td>
         <pre>        update_attribute(:_keywords, set_keywords)</pre>
@@ -1257,7 +1244,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>65</pre>
+        <pre>64</pre>
       </td>
       <td>
         <pre>      end</pre>
@@ -1270,7 +1257,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>66</pre>
+        <pre>65</pre>
       </td>
       <td>
         <pre>    end</pre>
@@ -1283,7 +1270,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>67</pre>
+        <pre>66</pre>
       </td>
       <td>
         <pre>    </pre>
@@ -1296,7 +1283,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>68</pre>
+        <pre>67</pre>
       </td>
       <td>
         <pre>    private</pre>
@@ -1309,7 +1296,7 @@
     
     <tr class="hit" data-hits="1">
       <td class="line_number">
-        <pre>69</pre>
+        <pre>68</pre>
       </td>
       <td>
         <pre>    def set_keywords</pre>
@@ -1320,48 +1307,48 @@
     </tr>
   
     
-    <tr class="hit" data-hits="38">
+    <tr class="hit" data-hits="36">
       <td class="line_number">
-        <pre>70</pre>
+        <pre>69</pre>
       </td>
       <td>
         <pre>      self._keywords = self.search_fields.map do |field|</pre>
       </td>
       <td class="hits">
-        38
+        36
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="228">
+    <tr class="hit" data-hits="216">
       <td class="line_number">
-        <pre>71</pre>
+        <pre>70</pre>
       </td>
       <td>
-        <pre>        Util.keywords(self, field, stem_keywords, ignore_list)</pre>
+        <pre>        Util.keywords(self, field, stem_keywords)</pre>
       </td>
       <td class="hits">
-        228
+        216
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="373">
+    <tr class="hit" data-hits="355">
       <td class="line_number">
-        <pre>72</pre>
+        <pre>71</pre>
       </td>
       <td>
         <pre>      end.flatten.reject{|k| k.nil? || k.empty?}.uniq.sort</pre>
       </td>
       <td class="hits">
-        373
+        355
       </td>
     </tr>
   
     
     <tr class="never" >
       <td class="line_number">
-        <pre>73</pre>
+        <pre>72</pre>
       </td>
       <td>
         <pre>    end</pre>
@@ -1374,7 +1361,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>74</pre>
+        <pre>73</pre>
       </td>
       <td>
         <pre>    </pre>
@@ -1387,7 +1374,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>75</pre>
+        <pre>74</pre>
       </td>
       <td>
         <pre>  end</pre>
@@ -1400,7 +1387,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>76</pre>
+        <pre>75</pre>
       </td>
       <td>
         <pre>end</pre>
@@ -1463,7 +1450,7 @@
         <pre>3</pre>
       </td>
       <td>
-        <pre>  def self.keywords(klass, field, stem_keywords, ignore_list)</pre>
+        <pre>  def self.keywords(klass, field, stem_keywords, ignore_list=[])</pre>
       </td>
       <td class="hits">
         1
@@ -1471,7 +1458,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="228">
+    <tr class="hit" data-hits="216">
       <td class="line_number">
         <pre>4</pre>
       </td>
@@ -1479,12 +1466,12 @@
         <pre>    if field.is_a?(Hash)</pre>
       </td>
       <td class="hits">
-        228
+        216
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="38">
+    <tr class="hit" data-hits="36">
       <td class="line_number">
         <pre>5</pre>
       </td>
@@ -1492,12 +1479,12 @@
         <pre>      field.keys.map do |key|</pre>
       </td>
       <td class="hits">
-        38
+        36
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="114">
+    <tr class="hit" data-hits="108">
       <td class="line_number">
         <pre>6</pre>
       </td>
@@ -1505,12 +1492,12 @@
         <pre>        attribute = klass.send(key)</pre>
       </td>
       <td class="hits">
-        114
+        108
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="114">
+    <tr class="hit" data-hits="108">
       <td class="line_number">
         <pre>7</pre>
       </td>
@@ -1518,12 +1505,12 @@
         <pre>        unless attribute.blank?</pre>
       </td>
       <td class="hits">
-        114
+        108
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="105">
+    <tr class="hit" data-hits="99">
       <td class="line_number">
         <pre>8</pre>
       </td>
@@ -1531,12 +1518,12 @@
         <pre>          method = field[key]</pre>
       </td>
       <td class="hits">
-        105
+        99
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="105">
+    <tr class="hit" data-hits="99">
       <td class="line_number">
         <pre>9</pre>
       </td>
@@ -1544,12 +1531,12 @@
         <pre>          if attribute.is_a?(Array)</pre>
       </td>
       <td class="hits">
-        105
+        99
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="69">
+    <tr class="hit" data-hits="65">
       <td class="line_number">
         <pre>10</pre>
       </td>
@@ -1557,12 +1544,12 @@
         <pre>            if method.is_a?(Array)</pre>
       </td>
       <td class="hits">
-        69
+        65
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="165">
+    <tr class="hit" data-hits="155">
       <td class="line_number">
         <pre>11</pre>
       </td>
@@ -1570,7 +1557,7 @@
         <pre>              method.map {|m| attribute.map { |a| Util.normalize_keywords a.send(m), stem_keywords, ignore_list } }</pre>
       </td>
       <td class="hits">
-        165
+        155
       </td>
     </tr>
   
@@ -1588,7 +1575,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="144">
+    <tr class="hit" data-hits="136">
       <td class="line_number">
         <pre>13</pre>
       </td>
@@ -1596,7 +1583,7 @@
         <pre>              attribute.map(&amp;method).map { |t| Util.normalize_keywords t, stem_keywords, ignore_list }</pre>
       </td>
       <td class="hits">
-        144
+        136
       </td>
     </tr>
   
@@ -1627,7 +1614,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="36">
+    <tr class="hit" data-hits="34">
       <td class="line_number">
         <pre>16</pre>
       </td>
@@ -1635,7 +1622,7 @@
         <pre>            Util.normalize_keywords(attribute.send(method), stem_keywords, ignore_list)</pre>
       </td>
       <td class="hits">
-        36
+        34
       </td>
     </tr>
   
@@ -1692,7 +1679,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="190">
+    <tr class="hit" data-hits="180">
       <td class="line_number">
         <pre>21</pre>
       </td>
@@ -1700,12 +1687,12 @@
         <pre>      value = klass[field]</pre>
       </td>
       <td class="hits">
-        190
+        180
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="190">
+    <tr class="hit" data-hits="180">
       <td class="line_number">
         <pre>22</pre>
       </td>
@@ -1713,12 +1700,12 @@
         <pre>      value = value.join(' ') if value.respond_to?(:join)</pre>
       </td>
       <td class="hits">
-        190
+        180
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="190">
+    <tr class="hit" data-hits="180">
       <td class="line_number">
         <pre>23</pre>
       </td>
@@ -1726,7 +1713,7 @@
         <pre>      Util.normalize_keywords(value, stem_keywords, ignore_list) if value</pre>
       </td>
       <td class="hits">
-        190
+        180
       </td>
     </tr>
   
@@ -1775,7 +1762,7 @@
         <pre>27</pre>
       </td>
       <td>
-        <pre>  def self.normalize_keywords(text, stem_keywords, ignore_list)</pre>
+        <pre>  def self.normalize_keywords(text, stem_keywords, ignore_list=[])</pre>
       </td>
       <td class="hits">
         1
@@ -1783,7 +1770,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="351">
+    <tr class="hit" data-hits="332">
       <td class="line_number">
         <pre>28</pre>
       </td>
@@ -1791,12 +1778,12 @@
         <pre>    return [] if text.blank?</pre>
       </td>
       <td class="hits">
-        351
+        332
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="312">
+    <tr class="hit" data-hits="295">
       <td class="line_number">
         <pre>29</pre>
       </td>
@@ -1804,7 +1791,7 @@
         <pre>    text = text.to_s.</pre>
       </td>
       <td class="hits">
-        312
+        295
       </td>
     </tr>
   
@@ -1900,7 +1887,7 @@
     </tr>
   
     
-    <tr class="hit" data-hits="345">
+    <tr class="hit" data-hits="322">
       <td class="line_number">
         <pre>37</pre>
       </td>
@@ -1908,12 +1895,12 @@
         <pre>      reject { |word| word.size &lt; 2 }</pre>
       </td>
       <td class="hits">
-        345
+        322
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="327">
+    <tr class="hit" data-hits="295">
       <td class="line_number">
         <pre>38</pre>
       </td>
@@ -1921,12 +1908,12 @@
         <pre>    text = text.reject { |word| ignore_list.include?(word) } unless ignore_list.blank?</pre>
       </td>
       <td class="hits">
-        327
+        295
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="312">
+    <tr class="hit" data-hits="295">
       <td class="line_number">
         <pre>39</pre>
       </td>
@@ -1934,12 +1921,12 @@
         <pre>    text = text.map(&amp;:stem) if stem_keywords</pre>
       </td>
       <td class="hits">
-        312
+        295
       </td>
     </tr>
   
     
-    <tr class="hit" data-hits="312">
+    <tr class="hit" data-hits="295">
       <td class="line_number">
         <pre>40</pre>
       </td>
@@ -1947,7 +1934,7 @@
         <pre>    text</pre>
       </td>
       <td class="hits">
-        312
+        295
       </td>
     </tr>
   
@@ -3006,7 +2993,7 @@
         <pre>33</pre>
       </td>
       <td>
-        <pre>  it &quot;should ignore keywords from ignore list&quot; do</pre>
+        <pre>  it &quot;should ignore keywords with less than two words&quot; do</pre>
       </td>
       <td class="hits">
         1
@@ -3019,7 +3006,7 @@
         <pre>34</pre>
       </td>
       <td>
-        <pre>    Util.normalize_keywords(&quot;An amazing awesome runner running and eating&quot;, true, YAML.load(File.open(File.dirname(__FILE__) + '/config/ignorelist.yml'))[&quot;ignorelist&quot;]).should == [&quot;an&quot;, &quot;runner&quot;, &quot;run&quot;, &quot;and&quot;, &quot;eat&quot;]</pre>
+        <pre>    Util.normalize_keywords(&quot;A runner running&quot;, false, &quot;&quot;).should_not include &quot;a&quot;</pre>
       </td>
       <td class="hits">
         1
@@ -3058,7 +3045,7 @@
         <pre>37</pre>
       </td>
       <td>
-        <pre>  it &quot;should ignore keywords with less than two words&quot; do</pre>
+        <pre>   it &quot;should not ignore numbers&quot; do</pre>
       </td>
       <td class="hits">
         1
@@ -3071,7 +3058,7 @@
         <pre>38</pre>
       </td>
       <td>
-        <pre>    Util.normalize_keywords(&quot;A runner running&quot;, false, &quot;&quot;).should_not include &quot;a&quot;</pre>
+        <pre>      Util.normalize_keywords(&quot;Ford T 1908&quot;, false, &quot;&quot;).should include &quot;1908&quot;</pre>
       </td>
       <td class="hits">
         1
@@ -3084,7 +3071,7 @@
         <pre>39</pre>
       </td>
       <td>
-        <pre>  end</pre>
+        <pre>   end</pre>
       </td>
       <td class="hits">
         
@@ -3097,58 +3084,6 @@
         <pre>40</pre>
       </td>
       <td>
-        <pre></pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>41</pre>
-      </td>
-      <td>
-        <pre>   it &quot;should not ignore numbers&quot; do</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="hit" data-hits="1">
-      <td class="line_number">
-        <pre>42</pre>
-      </td>
-      <td>
-        <pre>      Util.normalize_keywords(&quot;Ford T 1908&quot;, false, &quot;&quot;).should include &quot;1908&quot;</pre>
-      </td>
-      <td class="hits">
-        1
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>43</pre>
-      </td>
-      <td>
-        <pre>   end</pre>
-      </td>
-      <td class="hits">
-        
-      </td>
-    </tr>
-  
-    
-    <tr class="never" >
-      <td class="line_number">
-        <pre>44</pre>
-      </td>
-      <td>
         <pre>   </pre>
       </td>
       <td class="hits">
@@ -3159,7 +3094,7 @@
     
     <tr class="never" >
       <td class="line_number">
-        <pre>45</pre>
+        <pre>41</pre>
       </td>
       <td>
         <pre>end</pre>

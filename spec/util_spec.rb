@@ -30,10 +30,6 @@ describe Util do
     Util.normalize_keywords("A runner running and eating", true, "").should == ["runner", "run", "and", "eat"]
   end
 
-  it "should ignore keywords from ignore list" do
-    Util.normalize_keywords("An amazing awesome runner running and eating", true, YAML.load(File.open(File.dirname(__FILE__) + '/config/ignorelist.yml'))["ignorelist"]).should == ["an", "runner", "run", "and", "eat"]
-  end
-
   it "should ignore keywords with less than two words" do
     Util.normalize_keywords("A runner running", false, "").should_not include "a"
   end

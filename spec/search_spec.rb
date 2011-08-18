@@ -6,7 +6,6 @@ describe MongoMapper::Search do
   
   before(:each) do
     Product.stem_keywords = false
-    Product.ignore_list   = nil
     @product = Product.create :brand => "Apple",
                               :name => "iPhone",
                               :tags => ["Amazing", "Awesome", "Olé"].map { |tag| Tag.new(:name => tag) },
@@ -17,7 +16,6 @@ describe MongoMapper::Search do
   context "utf-8 characters" do
     before(:each) {
       Product.stem_keywords = false
-      Product.ignore_list   = nil
       @product = Product.create :brand => "Эльбрус",
                                 :name => "Процессор",
                                 :tags => ["Amazing", "Awesome", "Olé"].map { |tag| Tag.new(:name => tag) },
@@ -63,12 +61,6 @@ describe MongoMapper::Search do
     Product.stem_keywords = true
     @product.save!
     @product._keywords.should == ["amaz", "appl", "awesom", "craddl", "iphon", "mobil", "ol"]
-  end
-
-  it "should ignore keywords in an ignore list" do
-    Product.ignore_list = YAML.load(File.open(File.dirname(__FILE__) + '/config/ignorelist.yml'))["ignorelist"]
-    @product.save!
-    @product._keywords.should == ["apple", "craddle", "iphone", "mobile", "ole"]
   end
 
    it "should incorporate numbers as keywords" do

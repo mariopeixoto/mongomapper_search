@@ -3,7 +3,7 @@ module MongoMapper
     extend ActiveSupport::Concern
     
     included do
-      cattr_accessor :search_fields, :allow_empty_search, :stem_keywords, :ignore_list, :match
+      cattr_accessor :search_fields, :allow_empty_search, :stem_keywords, :match
     end
     
     def self.included(base)
@@ -22,7 +22,6 @@ module MongoMapper
         self.match              = [:any, :all].include?(options[:match]) ? options[:match] : :any
         self.allow_empty_search = [true, false].include?(options[:allow_empty_search]) ? options[:allow_empty_search] : false
         self.stem_keywords      = [true, false].include?(options[:stem_keywords]) ? options[:allow_empty_search] : false
-        self.ignore_list        = YAML.load(File.open(options[:ignore_list]))["ignorelist"] if options[:ignore_list].present?
         self.search_fields      = (self.search_fields || []).concat args
         
         key :_keywords, Array
@@ -34,7 +33,7 @@ module MongoMapper
       def search(query, options={})
         return all if query.blank? && allow_empty_search
         
-        keywords = Util.normalize_keywords(query, stem_keywords, ignore_list)
+        keywords = Util.normalize_keywords(query, stem_keywords)
         
         regexed_keywords = []
                         
@@ -68,7 +67,7 @@ module MongoMapper
     private
     def set_keywords
       self._keywords = self.search_fields.map do |field|
-        Util.keywords(self, field, stem_keywords, ignore_list)
+        Util.keywords(self, field, stem_keywords)
       end.flatten.reject{|k| k.nil? || k.empty?}.uniq.sort
     end
     

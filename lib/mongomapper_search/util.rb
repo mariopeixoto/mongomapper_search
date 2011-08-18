@@ -1,6 +1,6 @@
 module Util
 
-  def self.keywords(klass, field, stem_keywords, ignore_list)
+  def self.keywords(klass, field, stem_keywords, ignore_list=[])
     if field.is_a?(Hash)
       field.keys.map do |key|
         attribute = klass.send(key)
@@ -24,7 +24,7 @@ module Util
     end
   end
 
-  def self.normalize_keywords(text, stem_keywords, ignore_list)
+  def self.normalize_keywords(text, stem_keywords, ignore_list=[])
     return [] if text.blank?
     text = text.to_s.
       mb_chars.
