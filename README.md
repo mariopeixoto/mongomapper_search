@@ -96,6 +96,7 @@ allow_empty_search:
     Product.search("").size
     => 1
     
-//TODO
+RoadMap
+----
 
 - Create a ignore list so the search can ignore some words
