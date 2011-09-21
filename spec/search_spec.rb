@@ -1,9 +1,7 @@
 # encoding: utf-8
-
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe MongoMapper::Search do
-  
   before(:each) do
     Product.stem_keywords = false
     @product = Product.create :brand => "Apple",
@@ -24,8 +22,33 @@ describe MongoMapper::Search do
     }
 
     it "should leave utf8 characters" do
-      @product._keywords.should == ["amazing", "awesome", "ole", "Процессор", "Эльбрус", "процессоры"]
+      @product._brand.should == ["Эльбрус"]
+      @product._name.should == ["Процессор"]
+      @product._tags_name.should == ["amazing", "awesome", "ole"]
+      @product._category_name.should == ["процессоры"]
+      @product._subproducts_brand.should == []
     end
+  end
+  
+  it "should create search fields right" do
+    @product._brand.should == ["apple"]
+    @product._name.should == ["iphone"]
+    @product._tags_name.should == ["amazing", "awesome", "ole"]
+    @product._category_name.should == ["mobile"]
+    @product._subproducts_brand.should == ["apple"]
+  end
+  
+  it "should return result for a valid search" do
+    Product.search("iphone").size.should == 1
+    Product.search("ipad").size.should == 0
+    Product.search("apple").size.should == 1
+    Product.search("").size.should == 0
+    Product.search("", {:allow_empty_search => true}).size.should == 1
+  end
+
+  it "should find products by category name" do
+    Product.search("mobile").size.should == 1
+    Product.search("nokia").size.should == 0
   end
 
   context "when references are nil" do
@@ -34,33 +57,39 @@ describe MongoMapper::Search do
         lambda { Product.create! }.should_not raise_error
       end
     end
-    
+
     subject { Product.create :brand => "Apple", :name => "iPhone" }
 
-    its(:_keywords) { should == ["apple", "iphone"] }
+    its(:_brand) { should == ["apple"] }
+    its(:_name) { should == ["iphone"] }
   end
 
-  it "should set the _keywords field for array fields also" do
+  it "should set the search field for array fields also" do
     @product.attrs = ['lightweight', 'plastic', :red]
     @product.save!
-    @product._keywords.should include 'lightweight', 'plastic', 'red'
+    @product._attrs.should include 'lightweight', 'plastic', 'red'
   end
 
-  it "should inherit _keywords field and build upon" do
+  it "should inherit search fields and build upon" do
     variant = Variant.create :brand => "Apple",
                               :name => "iPhone",
                               :tags => ["Amazing", "Awesome", "Olé"].map { |tag| Tag.new(:name => tag) },
                               :category => Category.new(:name => "Mobile"),
                               :subproducts => [Subproduct.new(:brand => "Apple", :name => "Craddle")],
                               :color => :white
-    variant._keywords.should include 'white'
-    Variant.search("Apple white").to_a.should eq [variant]
+    variant._color.should include 'white'
+    variant._name.should include 'iphone'
+    Variant.search("Apple white").first.should == variant
   end
 
-  it "should set the _keywords field with stemmed words if stem is enabled" do
+  it "should set the search field with stemmed words if stem is enabled" do
     Product.stem_keywords = true
     @product.save!
-    @product._keywords.should == ["amaz", "appl", "awesom", "craddl", "iphon", "mobil", "ol"]
+    @product._brand.should == ["appl"]
+    @product._name.should == ["iphon"]
+    @product._tags_name.should == ["amaz","awesom", "ol"]
+    @product._category_name.should == ["mobil"]
+    @product._subproducts_brand.should == ["appl"]
   end
 
    it "should incorporate numbers as keywords" do
@@ -70,7 +99,7 @@ describe MongoMapper::Search do
                               :category => Category.new(:name => "Vehicle")
 
       @product.save!
-      @product._keywords.should == ["1908","amazing", "car", "first", "ford",  "vehicle"]
+      @product._name.should == ["1908"]
    end
 
 
@@ -125,14 +154,13 @@ describe MongoMapper::Search do
   end
 
   it "should search for embedded documents" do
-    Product.search("craddle").size.should == 1
+    Product.search("craddle").size.should == 0
   end
 
   it 'should work in a chainable fashion' do
+    @product.category.products.where(:brand => 'Apple').search("", {:allow_empty_search => true}).size.should == 1
     @product.category.products.where(:brand => 'Apple').search('apple').size.should == 1
     @product.category.products.where(:brand => 'Apple').search('troll').size.should == 0
-    @product.category.products.search('craddle').where(:brand => 'Apple').size.should == 1
-    @product.category.products.search('craddle').where(:brand => 'Dell').size.should == 0
   end
 
   it 'should return the classes that include the search module' do
@@ -146,5 +174,5 @@ describe MongoMapper::Search do
   it 'should have a class method to index all documents keywords' do
     Product.index_keywords!.should_not include(false)
   end
-  
+
 end

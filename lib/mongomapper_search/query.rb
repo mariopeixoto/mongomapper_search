@@ -3,8 +3,7 @@ module Plucky
     def search(query, options={})
       #Fix class search
       if first
-        to_merge = first.class.search(query, options)
-        find_each(to_merge.criteria.to_hash).to_a
+        first.class.search(query, options, self.criteria.source)
       else
         self
       end

@@ -9,5 +9,5 @@ class Product
   many :subproducts
   belongs_to :category
   
-  search_in :brand, :name, :outlet, :attrs, :tags => :name, :category => :name, :subproducts => [:brand, :name]
+  search_in :brand, :attrs, :outlet, :name => 3 ,  {:tags => :name} => 1, {:category => :name} => 1, {:subproducts => :brand} => 1
 end

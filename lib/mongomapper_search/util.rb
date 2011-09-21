@@ -19,22 +19,26 @@ module Util
       end
     else
       value = klass[field]
-      value = value.join(' ') if value.respond_to?(:join)
-      Util.normalize_keywords(value, stem_keywords, ignore_list) if value
+      if value
+        value = value.join(' ') if value.respond_to?(:join)
+        Util.normalize_keywords(value, stem_keywords, ignore_list) if value
+      else
+        []
+      end
     end
   end
 
   def self.normalize_keywords(text, stem_keywords, ignore_list=[])
     return [] if text.blank?
-    text = text.to_s.
-      mb_chars.
-      normalize(:kd).
-      to_s.
-      gsub(/[._:;'"`,?|+={}()!@#%^&*<>~\$\-\\\/\[\]]/, ' '). # strip punctuation
-      gsub(/[^[:alnum:]\s]/,'').   # strip accents
-      downcase.
-      split(' ').
-      reject { |word| word.size < 2 }
+    text = text.to_s
+      .mb_chars
+      .normalize(:kd)
+      .to_s
+      .gsub(/[._:;'"`,?|+={}()!@#%^&*<>~\$\-\\\/\[\]]/, ' ') # strip punctuation
+      .gsub(/[^[:alnum:]\s]/,'')   # strip accents
+      .downcase
+      .split(' ')
+      .reject { |word| word.size < 2 }
     text = text.reject { |word| ignore_list.include?(word) } unless ignore_list.blank?
     text = text.map(&:stem) if stem_keywords
     text

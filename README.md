@@ -26,12 +26,12 @@ Examples
       many :tags
       belongs_to :category
 
-      search_in :brand, :name, :tags => :name, :category => :name
+      search_in :brand, :name, {:tags => :name} => 1, {:category => :name} => 2
     end
 
     class Tag
       include MongoMapper::Document
-      key :name, Stirng
+      key :name, String
 
       belongs_to :product
     end
@@ -43,17 +43,21 @@ Examples
       many :products
     end
 
-Now when you save a product, you get a _keywords field automatically:
+Syntax:
 
-    p = Product.new :brand => "Apple", :name => "iPhone"
-    p.tags << Tag.new(:name => "Amazing")
-    p.tags << Tag.new(:name => "Awesome")
-    p.tags << Tag.new(:name => "Superb")
-    p.save
-    => true
-    p._keywords
+    search_in :brand, :name => 3, {:tags => :name} => 1
 
-Now you can run search, which will look in the _keywords field and return all matching results:
+    The search will be done using fields named as the symbols passed.
+    You can pass a boost parameter to smooth your search like in:
+
+        :name => 3 #It means that keywords found on name is 3 times more important than keywords found on :brand
+
+    The default boost is 1.
+
+    For while, complex attributes like {:tags => :name} must be declared with a boost value.
+
+
+Now you can run search, which will look in the search field and return all matching results:
 
     Product.search("apple iphone").size
     => 1
@@ -65,7 +69,7 @@ Note that the search is case insensitive, and accept partial searching too:
     
 You can use search in a chainable way:
 
-    Product.where(:brand => "Apple").search('iphone').sort(:price.asc)
+    Product.where(:brand => "Apple").search('iphone')
 
 
 Options
@@ -76,12 +80,12 @@ match:
   _:all_ - match all ocurrences
   Default is _:any_.
 
-    search_in :brand, :name, { :tags => :name }, { :match => :any }
+    search_in :brand, :name, { :tags => :name } => 1, { :match => :any }
 
     Product.search("apple motorola").size
     => 1
 
-    search_in :brand, :name, { :tags => :name }, { :match => :all }
+    search_in :brand, :name, { :tags => :name } => 1, { :match => :all }
 
     Product.search("apple motorola").size
     => 0
@@ -91,7 +95,7 @@ allow_empty_search:
   _false_ - match all ocurrences
   Default is _false_.
 
-    search_in :brand, :name, { :tags => :name }, { :allow_empty_search => true }
+    search_in :brand, :name, { :tags => :name } => 1, { :allow_empty_search => true }
 
     Product.search("").size
     => 1
