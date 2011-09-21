@@ -4,7 +4,7 @@ $:.unshift lib unless $:.include?(lib)
 
 Gem::Specification.new do |s|
   s.name        = "mongomapper_search"
-  s.version     = "0.1.0"
+  s.version     = "0.1.1"
   s.authors     = ["Mário Peixoto"]
   s.email       = ["mario.peixoto@gmail.com"]
   s.homepage    = "http://github.com/mariopeixoto/mongomapper_search"

@@ -168,7 +168,9 @@ describe MongoMapper::Search do
   end
 
   it 'should have a method to index keywords' do
+    @product.name = "iPhone White"
     @product.index_keywords!.should == true
+    @product._name.should include 'white'
   end
 
   it 'should have a class method to index all documents keywords' do
