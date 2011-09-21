@@ -18,7 +18,7 @@ module Util
         end
       end
     else
-      value = klass[field]
+      value = klass[field] || eval("klass.#{field}")
       if value
         value = value.join(' ') if value.respond_to?(:join)
         Util.normalize_keywords(value, stem_keywords, ignore_list) if value
