@@ -50,7 +50,7 @@ Syntax:
 The search will be done using fields named as the symbols passed.
 You can pass a boost parameter to smooth your search like in:
 
-        :name => 3 #It means that keywords found on name is 3 times more important than keywords found on :brand
+	:name => 3 #It means that keywords found on name is 3 times more important than keywords found on :brand
 
 The default boost is 1.
 For while, complex attributes like {:tags => :name} must be declared with a boost value.
